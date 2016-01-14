@@ -1,0 +1,59 @@
+{
+    "name": "final-gene/doctrine-module",
+    "description": "Doctrine module",
+    "type": "library",
+    "homepage": "https://gitlab.devel.final-gene.de/final-gene/doctrine-module",
+    "license": "proprietary",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://satis.final-gene.de"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Frank Giesecke",
+            "email": "frank.giesecke@final-gene.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "zendframework/zend-config": "^2.5",
+        "zendframework/zend-modulemanager": "^2.5",
+        "doctrine/doctrine-orm-module": "^0.9.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "zendframework/zend-filter": "^2.5",
+        "zendframework/zend-form": "^2.5",
+        "zendframework/zend-i18n": "^2.5",
+        "zendframework/zend-inputfilter": "^2.5",
+        "zendframework/zend-log": "^2.5",
+        "zendframework/zend-serializer": "^2.5",
+        "zendframework/zend-stdlib": "^2.5",
+        "zendframework/zend-test": "^2.5",
+        "zendframework/zend-validator": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "FinalGene\\DoctrineModule\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FinalGene\\DoctrineModuleTest\\": "tests/src"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "archive": {
+        "exclude": [
+            "/.*",
+            "/composer.*",
+            "/phpunit.*",
+            "/tests"
+        ]
+    }
+}
