@@ -2,9 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.0] - 2016-01-14
+## [1.0.1] - 2016-01-15
 ### Added
-- Support for MyISAM, that doesn't support foreign keys
+- Nothing
 
 ### Changed 
 - Nothing
@@ -16,7 +16,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Nothing
 
 ### Fixed
-- Nothing
+- Directory structure/namespace
 
 ### Security
 - Nothing
+
+## [1.0.0] - 2016-01-14
+### Added
+- Support for MyISAM, that doesn't support foreign keys
