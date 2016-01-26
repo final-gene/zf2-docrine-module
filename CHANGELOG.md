@@ -2,9 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.1] - 2016-01-15
+## [1.1.0] - 2016-01-26
 ### Added
-- Nothing
+- Entity manager to retrieve a doctrine entity manager based on an entity
 
 ### Changed 
 - Nothing
@@ -16,10 +16,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Nothing
 
 ### Fixed
-- Directory structure/namespace
+- Nothing
 
 ### Security
 - Nothing
+
+## [1.0.1] - 2016-01-15
+### Fixed
+- Directory structure/namespace
 
 ## [1.0.0] - 2016-01-14
 ### Added
