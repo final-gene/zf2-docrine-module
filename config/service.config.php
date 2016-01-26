@@ -6,6 +6,8 @@
  * @author    Frank Giesecke <frank.giesecke@final-gene.de>
  */
 
+namespace FinalGene\DoctrineModule;
+
 return [
     'service_manager' => [
         'initializers' => [
@@ -13,6 +15,7 @@ return [
         'invokables' => [
         ],
         'factories' => [
+            'EntityManager' => Manager\EntityManagerFactory::class,
         ],
     ],
 ];

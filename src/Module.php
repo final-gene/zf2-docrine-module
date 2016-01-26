@@ -8,15 +8,21 @@
 
 namespace FinalGene\DoctrineModule;
 
+use FinalGene\DoctrineModule\ModuleManager\Feature\EntityManagerProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
+use Zend\ModuleManager\Feature\InitProviderInterface;
+use Zend\ModuleManager\Listener\ServiceListenerInterface;
+use Zend\ModuleManager\ModuleManagerInterface;
+use Zend\Mvc\MvcEvent;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Module
  *
  * @package FinalGene\DoctrineModule
  */
-class Module implements ConfigProviderInterface, DependencyIndicatorInterface
+class Module implements ConfigProviderInterface, DependencyIndicatorInterface, InitProviderInterface
 {
     /**
      * @inheritdoc
@@ -66,5 +72,24 @@ class Module implements ConfigProviderInterface, DependencyIndicatorInterface
             'DoctrineModule',
             'DoctrineORMModule',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function init(ModuleManagerInterface $manager)
+    {
+        /** @var ServiceLocatorInterface $serviceManager */
+        $serviceManager = $manager->getEvent()->getParam('ServiceManager');
+
+        /** @var ServiceListenerInterface $serviceListener */
+        $serviceListener = $serviceManager->get('ServiceListener');
+
+        $serviceListener->addServiceManager(
+            'EntityManager',
+            'entity_manager_config',
+            EntityManagerProviderInterface::class,
+            'getEntityManagerConfig'
+        );
     }
 }
