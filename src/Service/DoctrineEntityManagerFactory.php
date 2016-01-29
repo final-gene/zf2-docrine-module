@@ -9,6 +9,7 @@
 namespace FinalGene\DoctrineModule\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
+use FinalGene\DoctrineModule\Exception\ConfigurationException;
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -27,7 +28,7 @@ class DoctrineEntityManagerFactory implements AbstractFactoryInterface
      * @param string $entityName
      *
      * @return Object|null
-     * @throws \ConfigurationException
+     * @throws ConfigurationException
      */
     protected function getManager(ServiceLocatorInterface $serviceLocator, $entityName)
     {
@@ -37,7 +38,7 @@ class DoctrineEntityManagerFactory implements AbstractFactoryInterface
         // Get configuration
         $config = $serviceManager->get('config');
         if (!isset($config['doctrine']['driver'])) {
-            throw new \ConfigurationException('Doctrine driver configuration missing');
+            throw new ConfigurationException('Doctrine driver configuration missing');
         }
 
         // Get entity namespace
