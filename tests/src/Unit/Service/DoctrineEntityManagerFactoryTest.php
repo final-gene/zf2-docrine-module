@@ -99,7 +99,7 @@ class DoctrineEntityManagerFactoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers FinalGene\DoctrineModule\Service\DoctrineEntityManagerFactory::getManager
-     * @expectedException \ConfigurationException
+     * @expectedException \FinalGene\DoctrineModule\Exception\ConfigurationException
      */
     public function testGetManagerThrowsExceptionIfNoConfigExists()
     {

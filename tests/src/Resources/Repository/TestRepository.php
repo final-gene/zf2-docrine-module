@@ -6,7 +6,7 @@
  * @author    Frank Giesecke <frank.giesecke@final-gene.de>
  */
 
-namespace FinalGene\DoctrineModuleTest\Unit\Service\DoctrineObjectRepositoryFactoryTest\Repository;
+namespace FinalGene\DoctrineModuleTest\Resources\Repository;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 

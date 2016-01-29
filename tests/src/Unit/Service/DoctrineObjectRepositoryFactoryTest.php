@@ -14,7 +14,7 @@ use FinalGene\DoctrineModule\Manager\EntityManager;
 use FinalGene\DoctrineModule\Manager\RepositoryManager;
 use FinalGene\DoctrineModule\Service\DoctrineObjectRepositoryFactory;
 use FinalGene\DoctrineModuleTest\Resources\Entity\TestEntity;
-use FinalGene\DoctrineModuleTest\Unit\Service\DoctrineObjectRepositoryFactoryTest\Repository\TestRepository;
+use FinalGene\DoctrineModuleTest\Resources\Repository\TestRepository;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -101,6 +101,9 @@ class DoctrineObjectRepositoryFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ObjectRepository::class, $doctrineObjectRepositoryFactory->createServiceWithName($serviceLocator, '', TestEntity::class));
     }
 
+    /**
+     * @covers FinalGene\DoctrineModule\Service\DoctrineObjectRepositoryFactory::getRepository
+     */
     public function testGetRepository()
     {
         $serviceLocator = $this->getServiceLocator();
@@ -108,64 +111,10 @@ class DoctrineObjectRepositoryFactoryTest extends \PHPUnit_Framework_TestCase
         $doctrineObjectRepositoryFactory = new DoctrineObjectRepositoryFactory();
 
         $getRepository = $this->getMethod('getRepository');
-        $getRepository->invokeArgs($doctrineObjectRepositoryFactory, [$serviceLocator, TestEntity::class]);
-    }
+        $result = $getRepository->invokeArgs($doctrineObjectRepositoryFactory, [$serviceLocator, TestEntity::class]);
 
-//    /**
-//     * Tests if the factory creates a repository via the entitymanager
-//     *
-//     * @return void
-//     */
-//    public function testCreateService()
-//    {
-//        $parentServiceLocatorMock = $this->getMock(ServiceLocatorInterface::class);
-//
-//        $serviceLocatorMock = $this->getMock(RepositoryManager::class);
-//        $serviceLocatorMock
-//            ->expects($this->any())
-//            ->method('getServiceLocator')
-//            ->willReturn($parentServiceLocatorMock);
-//
-//        $doctrineEntityManagerMock = $this->getMock(
-//            EntityManagerInterface::class,
-//            [],
-//            [],
-//            '',
-//            false
-//        );
-//        $doctrineEntityManagerMock
-//            ->expects($this->once())
-//            ->method('getRepository')
-//            ->will(
-//                $this->returnValueMap([
-//                    [
-//                        TestEntity::class,
-//                        new TestRepository()
-//                    ]
-//                ])
-//            );
-//
-//        $entityManagerMock = $this->getMock(EntityManager::class);
-//        $entityManagerMock
-//            ->expects($this->any())
-//            ->method('get')
-//            ->willReturn($doctrineEntityManagerMock);
-//
-//        $parentServiceLocatorMock
-//            ->expects($this->any())
-//            ->method('get')
-//            ->with('EntityManager')
-//            ->willReturn($entityManagerMock);
-//
-//        $this->assertInstanceOf(
-//            TestRepository::class,
-//            $this->doctrineObjectRepositoryFactory->createServiceWithName(
-//                $serviceLocatorMock,
-//                '',
-//                TestEntity::class
-//            )
-//        );
-//    }
+        $this->assertInstanceOf(TestRepository::class, $result);
+    }
 
     /**
      * @return AbstractPluginManager
@@ -180,7 +129,7 @@ class DoctrineObjectRepositoryFactoryTest extends \PHPUnit_Framework_TestCase
             false
         );
         $doctrineEntityManager
-            ->expects($this->once())
+            ->expects($this->any())
             ->method('getRepository')
             ->will(
                 $this->returnValueMap([
@@ -204,7 +153,7 @@ class DoctrineObjectRepositoryFactoryTest extends \PHPUnit_Framework_TestCase
             ->with('EntityManager')
             ->willReturn($entityManager);
 
-        $serviceLocator = $this->getMockForAbstractClass(AbstractPluginManager::class, [], '', true, true, true, ['getServiceLocator']);
+        $serviceLocator = $this->getMockForAbstractClass(ServiceLocatorInterface::class, [], '', true, true, true, ['getServiceLocator']);
         $serviceLocator
             ->expects($this->any())
             ->method('getServiceLocator')
