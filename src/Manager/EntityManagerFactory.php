@@ -28,12 +28,11 @@ class EntityManagerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $repositoryManager = new EntityManager();
+        $entityManager = new EntityManager();
 
-        $repositoryManager->setServiceLocator($serviceLocator);
-        $repositoryManager->addAbstractFactory(new DoctrineEntityManagerFactory());
+        $entityManager->setServiceLocator($serviceLocator);
+        $entityManager->addAbstractFactory(new DoctrineEntityManagerFactory());
 
-        return $repositoryManager;
+        return $entityManager;
     }
-
 }
