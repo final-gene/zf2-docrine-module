@@ -2,9 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.1.0] - 2016-01-26
+## [1.2.0] - 2016-01-29
 ### Added
-- Entity manager to retrieve a doctrine entity manager based on an entity
+- Repository manager to get a repository depending on your loaded modules and their repository manager configuration
 
 ### Changed 
 - Nothing
@@ -16,10 +16,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Nothing
 
 ### Fixed
-- Nothing
+- Entity manager
 
 ### Security
 - Nothing
+
+## [1.1.0] - 2016-01-26
+### Added
+- Entity manager to retrieve a doctrine entity manager based on an entity
 
 ## [1.0.1] - 2016-01-15
 ### Fixed
