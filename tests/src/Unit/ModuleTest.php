@@ -10,6 +10,7 @@ namespace FinalGene\DoctrineModuleTest\Unit;
 
 use FinalGene\DoctrineModule\Module;
 use FinalGene\DoctrineModule\ModuleManager\Feature\EntityManagerProviderInterface;
+use FinalGene\DoctrineModule\ModuleManager\Feature\RepositoryProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
 use Zend\ModuleManager\Feature\InitProviderInterface;
@@ -98,13 +99,21 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     {
         $serviceListener = $this->getMockForAbstractClass(ServiceListenerInterface::class, [], '', true, true, true, ['addServiceManager']);
         $serviceListener
-            ->expects($this->once())
+            ->expects($this->any())
             ->method('addServiceManager')
-            ->with(
-                'EntityManager',
-                'entity_manager_config',
-                EntityManagerProviderInterface::class,
-                'getEntityManagerConfig'
+            ->withConsecutive(
+                [
+                    'EntityManager',
+                    'entity_manager_config',
+                    EntityManagerProviderInterface::class,
+                    'getEntityManagerConfig',
+                ],
+                [
+                    'RepositoryManager',
+                    'repositories',
+                    RepositoryProviderInterface::class,
+                    'getRepositoryConfig',
+                ]
             );
 
         $serviceLocator = $this->getMockForAbstractClass(ServiceLocatorInterface::class, [], '', true, true, true, ['get']);

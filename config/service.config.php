@@ -16,6 +16,7 @@ return [
         ],
         'factories' => [
             'EntityManager' => Manager\EntityManagerFactory::class,
+            'RepositoryManager' => Manager\RepositoryManagerFactory::class,
         ],
     ],
 ];
