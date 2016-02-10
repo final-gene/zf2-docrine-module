@@ -32,6 +32,7 @@ class Module implements ConfigProviderInterface, DependencyIndicatorInterface, I
         $config = [];
         $configFiles = [
             'config/service.config.php',
+            'config/validators.config.php',
         ];
 
         foreach ($configFiles as $configFile) {
