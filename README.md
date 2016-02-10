@@ -152,3 +152,34 @@ return [
 ];
 ```
 
+### Validators
+
+#### ObjectExists
+
+This validator will determinate wetter an object for the given parameter exists or not.
+
+##### Configuration
+
+The validator can be used and configured as any other validator. You can set the following options:
+* `entity_class`: The FQCN for the entity object
+* `find_method`: The method in the repository to find the object
+
+##### Examples
+
+In your validators configuration:
+
+```php
+[
+    // ...
+    [
+        'name' => 'FinalGene\\DoctrineModule\\Validator\\ObjectExists',
+        'options' => [
+            'entity_class' => 'Your\\Doctrine\\Entity',
+            'find_method' => 'find',
+            'messageTemplates' => [
+                'noObjectFound' => 'Entity with ID \'%value%\' not found',
+            ],
+        ],
+    ],
+];
+```
