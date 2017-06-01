@@ -2,7 +2,7 @@
     "name": "final-gene/doctrine-module",
     "description": "Doctrine module",
     "type": "library",
-    "homepage": "https://gitlab.devel.final-gene.de/final-gene/doctrine-module",
+    "homepage": "https://gitlab.final-gene.de/final-gene/doctrine-module",
     "license": "proprietary",
     "repositories": [
         {
