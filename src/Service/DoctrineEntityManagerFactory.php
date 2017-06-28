@@ -64,15 +64,17 @@ class DoctrineEntityManagerFactory implements AbstractFactoryInterface
                 }
 
                 // Driver key matches namespace
-                if (!empty($config['doctrine']['driver'][$driverName])
-                &&  is_array($config['doctrine']['driver'][$driverName]['paths'])
+                if (empty($config['doctrine']['driver'][$driverName])
+                ||  !is_array($config['doctrine']['driver'][$driverName]['paths'])
                 ) {
-                    foreach ($config['doctrine']['driver'][$driverName]['paths'] as $path) {
-                        $path = realpath($path);
-                        if ($path === $entityPath) {
-                            $entityManager = $serviceManager->get('doctrine.entitymanager.' . $entityManagerName);
-                            break;
-                        }
+                    continue;
+                }
+
+                foreach ($config['doctrine']['driver'][$driverName]['paths'] as $path) {
+                    $path = realpath($path);
+                    if ($path === $entityPath) {
+                        $entityManager = $serviceManager->get('doctrine.entitymanager.' . $entityManagerName);
+                        break;
                     }
                 }
 
