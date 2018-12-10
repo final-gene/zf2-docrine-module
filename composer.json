@@ -2,14 +2,8 @@
     "name": "final-gene/doctrine-module",
     "description": "Doctrine module",
     "type": "library",
-    "homepage": "https://gitlab.final-gene.de/final-gene/doctrine-module",
-    "license": "proprietary",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://satis.final-gene.de"
-        }
-    ],
+    "homepage": "https://github.com/final-gene/zf2-docrine-module",
+    "license": "MIT",
     "authors": [
         {
             "name": "Frank Giesecke",
